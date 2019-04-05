@@ -1,0 +1,23 @@
+package ca.csf.dfc.operationsbinaires.classes;
+import ca.csf.dfc.operationsbinaires.interfaces.Expression;
+
+/**
+ * @author ManueLMaldonado
+ *
+ */
+public abstract class OperationBinaire implements Expression{
+	
+	private Expression m_operation;
+	
+	/**
+	 * constructor d'initialisation
+	 */
+	public OperationBinaire() {
+		
+	}
+	
+	public OperationBinaire( Entier p_entier1, Entier p_entier2) {
+		
+	}
+	
+}

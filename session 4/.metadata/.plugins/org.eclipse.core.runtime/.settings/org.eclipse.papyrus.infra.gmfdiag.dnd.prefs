@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+org.eclipse.papyrus.infra.gmfdiag.dnd.expansiondropsteategy.isActive=false
+org.eclipse.papyrus.java.reverse.ui.dnd.reversedropstrategy\:org.eclipse.papyrus.designer.languages.java.reverse.ui.dnd.ReverseJobAndTransactionalDropStrategy\:defaultStrategy=org.eclipse.papyrus.designer.languages.java.reverse.ui.dnd.ReverseJobAndTransactionalDropStrategy

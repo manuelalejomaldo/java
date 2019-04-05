@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<battleship>
+    <grille hauteur="20"/>
+	<equipe>
+		<bateau type="sousmarin" x="0" y="0" dir="E" />
+		<bateau type="sousmarin" x="1" y="0" dir="E" />
+		<bateau type="sousmarin" x="2" y="0" dir="E" />
+		<bateau type="sousmarin" x="3" y="0" dir="E" />
+		<bateau type="porteavion" x="4" y="0" dir="E" />
+		<bateau type="porteavion" x="5" y="0" dir="E" />
+		<bateau type="porteavion" x="6" y="0" dir="E" />
+		<bateau type="porteavion" x="7" y="0" dir="E" />
+	</equipe>
+	<equipe>
+		<bateau type="sousmarin" x="12" y="39" dir="W" />
+		<bateau type="sousmarin" x="13" y="39" dir="W" />
+		<bateau type="sousmarin" x="14" y="39" dir="W" />
+		<bateau type="sousmarin" x="15" y="39" dir="W" />
+		<bateau type="porteavion" x="16" y="39" dir="W" />
+		<bateau type="porteavion" x="17" y="39" dir="W" />
+		<bateau type="porteavion" x="18" y="39" dir="W" />
+		<bateau type="porteavion" x="19" y="39" dir="W" />
+	</equipe>
+</battleship>

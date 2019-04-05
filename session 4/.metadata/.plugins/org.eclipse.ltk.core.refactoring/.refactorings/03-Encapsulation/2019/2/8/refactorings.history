@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ca.cdf.dfc.console.MainEncapsulation&apos; to &apos;Main&apos;&#x0D;&#x0A;- Original project: &apos;03-Encapsulation&apos;&#x0D;&#x0A;- Original element: &apos;ca.cdf.dfc.console.MainEncapsulation&apos;&#x0D;&#x0A;- Renamed element: &apos;ca.cdf.dfc.console.Main&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MainEncapsulation&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ca.cdf.dfc.console{MainEncapsulation.java[MainEncapsulation" matchStrategy="1" name="Main" qualified="false" references="true" similarDeclarations="false" stamp="1551018536569" textual="false" version="1.0"/>
+</session>

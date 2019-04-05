@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ca.csf.dfc.console.MainHeritage&apos; to &apos;Main&apos;&#x0D;&#x0A;- Original project: &apos;04-Heritage&apos;&#x0D;&#x0A;- Original element: &apos;ca.csf.dfc.console.MainHeritage&apos;&#x0D;&#x0A;- Renamed element: &apos;ca.csf.dfc.console.Main&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MainHeritage&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ca.csf.dfc.console{MainHeritage.java[MainHeritage" matchStrategy="1" name="Main" qualified="false" references="true" similarDeclarations="false" stamp="1551017841080" textual="false" version="1.0"/>
+</session>

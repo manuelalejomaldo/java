@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<battleship>
+    <grille hauteur="30"/>
+	<equipe>
+		<bateau type="sousmarin" x="12" y="0" dir="E" />
+		<bateau type="aviso" x="13" y="0" dir="E" />
+		<bateau type="corvette" x="14" y="0" dir="E" />
+		<bateau type="patrouilleur" x="15" y="0" dir="E" />
+		<bateau type="fregate" x="16" y="0" dir="E" />
+		<bateau type="destroyer" x="17" y="0" dir="E" />
+		<bateau type="croiseur" x="18" y="0" dir="E" />
+		<bateau type="porteavion" x="19" y="0" dir="E" />
+	</equipe>
+	<equipe>
+		<bateau type="sousmarin" x="0" y="26" dir="S" />
+		<bateau type="aviso" x="0" y="27" dir="S" />
+		<bateau type="corvette" x="0" y="28" dir="S" />
+		<bateau type="patrouilleur" x="0" y="29" dir="S" />
+		<bateau type="fregate" x="0" y="30" dir="S" />
+		<bateau type="destroyer" x="0" y="31" dir="S" />
+		<bateau type="croiseur" x="0" y="32" dir="S" />
+		<bateau type="porteavion" x="0" y="33" dir="S" />
+	</equipe>
+	<equipe>
+		<bateau type="sousmarin" x="29" y="26" dir="N" />
+		<bateau type="aviso" x="29" y="27" dir="N" />
+		<bateau type="corvette" x="29" y="28" dir="N" />
+		<bateau type="patrouilleur" x="29" y="29" dir="N" />
+		<bateau type="fregate" x="29" y="30" dir="N" />
+		<bateau type="destroyer" x="29" y="31" dir="N" />
+		<bateau type="croiseur" x="29" y="32" dir="N" />
+		<bateau type="porteavion" x="29" y="33" dir="N" />
+	</equipe>
+	<equipe>
+		<bateau type="sousmarin" x="12" y="59" dir="W" />
+		<bateau type="aviso" x="13" y="59" dir="W" />
+		<bateau type="corvette" x="14" y="59" dir="W" />
+		<bateau type="patrouilleur" x="15" y="59" dir="W" />
+		<bateau type="fregate" x="16" y="59" dir="W" />
+		<bateau type="destroyer" x="17" y="59" dir="W" />
+		<bateau type="croiseur" x="18" y="59" dir="W" />
+		<bateau type="porteavion" x="19" y="59" dir="W" />
+	</equipe>
+</battleship>

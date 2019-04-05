@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+			<item value="D:\Java\session 4\H2019POOPartielCorrection"/>
+			<item value="D:\Java\session 4\H2019POOPartiel_ManuelMaldonado"/>
+			<item value="D:\Java\session 4\H2019POOPartiel_Manuel"/>
+			<item value="D:\Java\session 4\H2019POOPartiel"/>
+			<item value="D:\Java\session 4\Prueba1M"/>
+			<item value="D:\Java\session 4\Prueba1"/>
+			<item value="D:\Java\session 4\A2018_POO_Examen01 - SolucionManuel"/>
+			<item value="D:\Java\session 4\A2018_POO_Examen01_PropositionCorrection"/>
+			<item value="D:\Java\session 4\A2018_POO_Examen01"/>
+			<item value="D:\Java\session 4\Revision1"/>
+			<item value="D:\Java\session 4\ExerciceRamasse01_PropositionCorrection"/>
+			<item value="D:\Java\session 4\Cours02\02-Bases Solution"/>
+			<item value="D:\Java\session 4\Cours05\05 corrige"/>
+			<item value="D:\Java\session 4\Fabio\Cours05-Polymorphisme"/>
+			<item value="D:\Java\session 4\Cours05\05_Polimorphisme"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="D:\Java\session 4\2-02-lambda-expressions.zip"/>
+			<item value="D:\Java\session 4\patterns-command-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-command-ejercicio.zip"/>
+			<item value="D:\Java\session 4\chain-of-responsability-pattern-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-chain-of-responsability-ejercicio.zip"/>
+			<item value="D:\Java\session 4\pattern-adapter-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-adapter-ejercicio.zip"/>
+			<item value="D:\Java\session 4\patterns-prototype-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-prototype-ejercicio.zip"/>
+			<item value="D:\Java\session 4\patterns-factory-method-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-factory-method-ejercicio.zip"/>
+			<item value="D:\Java\session 4\patterns-builder-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-builder-ejercicio.zip"/>
+			<item value="D:\Java\session 4\patterns-abstract-factory-solucion.zip"/>
+			<item value="D:\Java\session 4\patterns-abstract-factory-ejercicio.zip"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+		</list>
+	</section>
+</section>

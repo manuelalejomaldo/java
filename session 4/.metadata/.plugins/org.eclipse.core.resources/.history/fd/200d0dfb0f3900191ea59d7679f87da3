@@ -1,0 +1,76 @@
+/**
+ * 
+ */
+package ca.csf.dfc.console;
+
+import ca.csf.dfc.classes.Carre;
+import ca.csf.dfc.classes.Rectangle;
+
+/**
+ * @author ManueLMaldonado
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		Rectangle rectangle = new Rectangle();
+		
+		if (rectangle.getHauteur() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+
+		if (rectangle.getLargeur() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		if (rectangle.getAire() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		
+		Carre carre = new Carre();
+		
+		if (carre.getHauteur() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+
+		if (carre.getLargeur() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		if (carre.getAire() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		rectangle.setHauteur(3);
+		
+		if (rectangle.getHauteur() != 3 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+
+		if (rectangle.getLargeur() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		if (rectangle.getAire() != 0 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		rectangle.setLargeur(5);
+		
+		if (rectangle.getHauteur() != 3 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+
+		if (rectangle.getLargeur() != 5 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		if (rectangle.getAire() != 15 ) 
+			 new IllegalArgumentException("Le nom ne peut être vide");
+		
+		
+		Rectangle rectangle2 = new Carre();
+		
+		System.out.println(rectangle);
+		System.out.println(rectangle2);
+		System.out.println(carre);
+		
+	}
+
+}

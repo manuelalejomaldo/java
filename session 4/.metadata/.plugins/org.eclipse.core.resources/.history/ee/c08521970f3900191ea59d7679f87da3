@@ -1,0 +1,36 @@
+/**
+ * 
+ */
+package ca.csf.dfc.console;
+
+import ca.csf.dfc.classes.Carre;
+import ca.csf.dfc.classes.Rectangle;
+
+/**
+ * @author ManueLMaldonado
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		Rectangle rectangle = new Rectangle();
+		
+		if (rectangle != 0 ) throw
+		
+		Carre carre = new Carre();
+		
+		Rectangle rectangle2 = new Carre();
+		
+		System.out.println(rectangle);
+		System.out.println(rectangle2);
+		System.out.println(carre);
+		
+	}
+
+}

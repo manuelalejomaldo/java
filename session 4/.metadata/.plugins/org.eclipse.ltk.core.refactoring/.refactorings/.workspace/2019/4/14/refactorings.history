@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;TP_DessinVectoriel&apos;" deleteContents="true" description="Delete resource &apos;TP_DessinVectoriel&apos;" element1="/TP_DessinVectoriel" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1554232699804"/>&#x0A;<refactoring comment="Delete resource &apos;zip~battlesHips06fin.zip_expanded&apos;" deleteContents="false" description="Delete resource &apos;zip~battlesHips06fin.zip_expanded&apos;" element1="/zip~battlesHips06fin.zip_expanded" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1554233993735"/>
+</session>
