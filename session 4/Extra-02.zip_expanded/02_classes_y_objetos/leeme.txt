@@ -1,0 +1,3 @@
+Empieza abriendo la clase en src -> (default package) -> Registro.java
+
+A partir de alli, sigue las instrucciones que encontraras en los comentarios

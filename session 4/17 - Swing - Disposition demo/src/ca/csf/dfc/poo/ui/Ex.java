@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class Ex extends JFrame {
+	
 	public Ex() {
+		
 		this.setLayout(new BorderLayout());
 		JPanel chiffres = new JPanel();
 		chiffres.setLayout(new GridLayout(4, 3));

@@ -65,9 +65,11 @@ public class DemoJPanel extends JFrame
         Image icon = Toolkit.getDefaultToolkit().getImage(u);
         this.setIconImage(icon);
 
-        Border border = BorderFactory.createCompoundBorder(BorderFactory.createRaisedBevelBorder(),
-                BorderFactory.createLoweredBevelBorder());
+        Border border = BorderFactory.createCompoundBorder(
+        			BorderFactory.createRaisedBevelBorder(),
+        			BorderFactory.createLoweredBevelBorder());
 
+        //pour le label inferior
         lbl_StatusBar.setBorder(border);
         lbl_StatusBar.setHorizontalAlignment(JLabel.CENTER);
 

@@ -1,0 +1,718 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+  	<title>Implémentation du pattern MVC</title>
+  	<meta charset="iso-8859-1" />
+	<meta content="developpez-com" name="generator">
+	<meta name="description" content="Implémentation du pattern MVC"/>
+	<meta name="author" content="Baptiste Wicht"/>
+	<meta name="keywords" content="MVC, conception, pattern, mvc, java"> 
+  	<script type="text/javascript" src="./js/jquery-1.7.2.js"></script>
+  	<link rel="shortcut icon" type="image/x-icon" href="https://www.developpez.com/template/favicon.ico" />
+                                                 
+    <link rel="stylesheet" type="text/css" media="screen" href="./code.css" />
+  	<link rel="stylesheet" type="text/css" href="./mini-gabarit0.css" />
+  	<link rel="stylesheet" type="text/css" href="./lightbox.2.51.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./developpez-kit-generation.css" />
+    
+
+	
+    <!--[if IE 9]><link rel="stylesheet" type="text/css" href="./ie9.css" /><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="./ie8.css" /><![endif]-->
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="./ie.css" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="./ie7.css" /><![endif]-->
+    <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="./ie6.css" /><![endif]-->
+    <!--[if lt IE 9]><script type="text/javascript" src="./js/html5_ie.js"></script><![endif]-->
+ 
+    <script type="text/javascript" src="http://www.developpez.com/template/kit/mathjax-dvp/MathJax.js?config=TeX-AMS-MML_HTMLorMML&locale=fr"></script>
+    <script type="text/javascript" src="./js/developpez-kit-generation.js"></script>
+    <script type="text/javascript" src="./js/fonctions-kit.js"></script>
+    <script type="text/javascript" src="./js/lightbox.2.51.js"></script>
+    <script type="text/javascript" src="./js/LecteurSWF.js"></script>
+
+  </head>
+  <body>
+    <header class="layout">
+      <div id="quicknav">	
+        <nav>	
+          <ul>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://www.developpez.net/forums/">Forums</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://general.developpez.com/cours/">Tutoriels</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://magazine.developpez.com/">Magazine</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://general.developpez.com/faq/">FAQs</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://blog.developpez.com/">Blogs</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://projets.developpez.com/">Projets</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://chat.developpez.com/">Chat</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://www.developpez.com/newsletter/">Newsletter</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://etudes.developpez.com/">Études</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://emploi.developpez.com/">Emploi</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://club.developpez.com/">Club</a>
+        		</li>
+        		<li>
+        			<a style="color: #B7D0ED;" href="https://club.developpez.com/contacts/">Contacts</a>
+        		</li>
+        	</ul>
+        </nav>
+      </div>
+    </header>
+    <article  class="ArticleComplet" itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="genre" content="informatique"/>
+      <meta itemprop="inLanguage" content="fr-FR"/>	
+
+		<section class="ArticleHorsLigne">
+<header class="EnteteTitres">
+<h1 class="titre-article" itemprop="name">Implémentation du pattern MVC</h1>
+
+</header><nav class="nav-sommaire" role="navigation">
+<header><h1 class="TitreHeader StopArrondi ToggleGecko">Table des mati&egrave;res<img class="ToggleImgPlier" title="Plier" alt="Plier" src="./images/fleche-haut-bleue.png"/><img class="ToggleImgDeplier" title="Déplier" alt="Déplier" src="./images/fleche-bas-bleue.png" style="display:none;"/></h1></header>
+<ul id="nav_sommaire_ul_principal" class="nav-sommaire-ul">
+    <li><a class="summaryIndent0" href="#LI">I. Le design pattern MVC</a></li>
+    <li><a class="summaryIndent0" href="#LII">II. Implémentation</a><ul class="nav-sommaire-ul IndentationII">
+      
+      
+      
+      
+      <li><a class="summaryIndent1" href="#LII-A">II-A. Le modèle</a></li>
+      <li><a class="summaryIndent1" href="#LII-B">II-B. Le contrôleur</a></li>
+      <li><a class="summaryIndent1" href="#LII-C">II-C. Les vues</a></li>
+      <li><a class="summaryIndent1" href="#LII-D">II-D. La classe lanceur</a></li>
+      <li><a class="summaryIndent1" href="#LII-E">II-E. Résultat</a></li>
+    </ul></li>
+    <li><a class="summaryIndent0" href="#LIII">III. Changement de framework graphique</a></li>
+    <li><a class="summaryIndent0" href="#LIV">IV. Conclusion</a></li>
+  </ul></nav>
+
+
+<div class="fixeMarge"><section itemprop="about" class="SectionSynopsis">
+    <p><a href="http://dico.developpez.com/html/3020-Conception-MVC-Model-View-Controller.php" class="lienArticle lienDico" title="Dictionnaire des développeurs">MVC</a> est un <a href="http://dico.developpez.com/html/1574-Conception-design-pattern.php" class="lienArticle lienDico" title="Dictionnaire des développeurs">design pattern</a> très puissant, mais néanmoins assez complexe, qui permet de bien structurer de grosses applications graphiques. Nous allons apprendre à le maîtriser avec ce tutoriel. 
+		</p>
+  <p class="TextNbrVues">Article lu <span id="NbrVues">&nbsp;</span> fois.</p></section></div><div class="InfoAuthArtBook">
+	<section class="SectionAuteurs">
+	<header><h1 class="TitreHeader">L'auteur</h1></header>
+<p class="auteur" itemprop="name" itemscope itemtype="http://schema.org/Person"><a itemprop="url" class="auteur" href="http://www.developpez.net/forums/u75080/baptiste-wicht/"><span itemprop="author">Baptiste Wicht</span></a><a class="homepage" href="http://baptiste-wicht.developpez.com"><img src="./images/kitbm-site-personnel.png" title="home" alt="Site personnel" style="vertical-align:middle;"/></a></p>
+</section>
+<section class="SectionInformationArticle">
+<header><h1 class="TitreHeader">L'article</h1></header>
+
+<p class="InfoArticle">Publi&eacute;&nbsp;le&nbsp;<span itemprop="datePublished">24 avril 2007 </span></p><p>
+<span class="lientelechargementpdf"><a class="lientelechargement" href="http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/.pdf" title="Télécharger la version PDF de cet article.">Version PDF</a></span>
+<span class="lientelechargementzip"><a class="lientelechargement" href="http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/.zip" title="Télécharger la version HTML de cet article.">Version hors-ligne</a></span></p>
+<p><span class="lientelechargementebook"><a class="lientelechargement" href="http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/.epub" title="Télécharger la version ePub de l'article compatible avec la plupart des liseuses non Kindle (Amazon).">ePub</a></span>, <span class="lientelechargementebook"><a class="lientelechargement" href="http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/.azw" title="Télécharger la version Azw spécifique aux liseuses Kindle (Amazon).">Azw</a></span> et <span class="lientelechargementebook"><a class="lientelechargement" href="http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/.mobi" title="Télécharger la version Mobi de l'article compatible avec les liseuses Amazon.">Mobi</a></span></p>
+</section></div><section itemprop="articleBody" class="articleBody">
+    
+		<h1 class="TitreSection0" id="LI">I. Le design pattern MVC<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h1><div class="BlocSection0">
+      
+      <p>
+				Le <a href="http://dico.developpez.com/html/1574-Conception-design-pattern.php" class="lienArticle lienDico" title="Dictionnaire des développeurs">design pattern</a> Modèle-Vue-Contrôleur (MVC) est un pattern architectural qui sépare les données (le modèle), l'interface homme-machine (la vue) et la logique de contrôle (le contrôleur). 
+			</p>
+      <p>
+				Ce modèle de conception impose donc une séparation en 3 couches : 
+			</p>
+      <ul class="ListeDVP">
+        <li>Le modèle : Il représente les données de l'application. Il définit aussi l'interaction avec la base de données et le traitement de ces données. </li>
+        <li>La vue : Elle représente l'interface utilisateur, ce avec quoi il interagit. Elle n'effectue aucun traitement, elle se contente simplement d'afficher les données que lui fournit le modèle. Il peut tout à fait y avoir plusieurs vues qui présentent les données d'un même modèle. </li>
+        <li>Le contrôleur : Il gère l'interface entre le modèle et le client. Il va interpréter la requête de ce dernier pour lui envoyer la vue correspondante. Il effectue la synchronisation entre le modèle et les vues. </li>
+      </ul>
+      <p>
+				La synchronisation entre la vue et le modèle se passe avec le pattern Observer. Il permet de générer des événements lors d'une modification du modèle et d'indiquer à la vue qu'il faut se mettre à jour. 
+			</p>
+      <p>
+				Voici un schéma des interactions entre les différentes couches : 
+			</p>
+      <div class="div-figure"><figure class="figure-center"><a data-rel="lightbox[article]" href="./images/mvc.png"><img class="ImgCliquable figure-img-caption" src="./images/mvc.png" alt="Interactions entre les couches" width="516" height="325"/></a><figcaption class="figure-img-caption TextAlign-center">Interactions entre les couches</figcaption></figure></div>
+      <p><br/>Ce modèle de conception permet principalement 2 choses : 
+			</p>
+      <ul class="ListeDVP">
+        <li>Le changement d'une couche sans altérer les autres. C'est-à-dire que comme toutes les couches sont clairement séparées, on doit pouvoir en changer une pour, par exemple, remplacer Swing par SWT sans porter atteinte aux autres couches. On pourrait aussi donc changer le modèle sans toucher à la vue et au contrôleur. Cela rend les modifications plus simples. </li>
+        <li>La synchronisation des vues. Avec ce design pattern, toutes les vues qui montrent la même chose sont synchronisées. </li>
+      </ul>
+      <p>
+				Il faut tout de même garder en mémoire, que la mise en oeuvre de MVC dans une application n'est pas des plus simples. En effet, ce modèle de conception introduit tout de même un niveau de complexité assez élevé. De plus, implémenter MVC dans votre application nécessite une bonne conception dès le départ. Ce qui peut prendre du temps. Ce pattern n'est donc à conseiller que pour les moyennes et grandes applications. 
+			</p>
+    </div>
+    
+		<h1 class="TitreSection0" id="LII">II. Implémentation<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h1><div class="BlocSection0">
+      
+      <p>
+				Nous allons choisir un exemple très simple (voire même simpliste). Ce sera tout simplement une application permettant de modifier un volume. Il y aura plusieurs vues pour représenter ce volume et après toute modification, les vues devront être synchronisées. L'interface sera développée avec Swing. 
+			</p>
+      <p>
+				C'est certes bidon et très petit comme exemple, mais cela permettra de voir simplement la séparation des couches et l'utilisation du design pattern Observer. 
+			</p>
+      <p>
+				Par souci de simplicité, nous n'utiliserons ici qu'un seul package appelé volume. Dans une grosse application MVC, je vous conseille plutôt de clairement séparer le modèle, les vues et l'interface dans des packages différents. 
+			</p>
+      
+		<h2 class="TitreSection1" id="LII-A">II-A. Le modèle<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+        
+        <p>
+					Le modèle est assez simple à développer, vu qu'il ne gère qu'un volume. Pour commencer, on va déjà développer la base de notre modèle : 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e155">VolumeModel.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e155" onclick="selectionCode('contenuCoded0e155');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e155" class="contenuCode"><code class="java_keyword1">public</code> <code class="java_keyword3">class</code> VolumeModel <code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> <code class="java_keyword3">int</code> volume;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">VolumeModel</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>);
+ 
+		volume <code class="java_operator">=</code> <code class="java_digit">0</code>;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">int</code> <code class="java_function">getVolume</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		<code class="java_keyword1">return</code> volume;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">setVolume</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code>.volume <code class="java_operator">=</code> volume;
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Voilà, la première fonction de notre modèle est remplie, il fournit maintenant un volume qui peut être modifié. 
+				</p>
+        <p>
+					Mais maintenant, il faut que notre modèle puisse notifier un changement de volume. Pour cela, on va employer les listeners. On va donc créer un nouveau listener (VolumeListener) et un nouvel événement (VolumeChangedEvent) : 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e250">VolumeListener.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e250" onclick="selectionCode('contenuCoded0e250');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e250" class="contenuCode"><code class="java_keyword2">import</code> java.util.EventListener;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">interface</code> VolumeListener <code class="java_keyword1">extends</code> EventListener <code class="java_operator">{</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">volumeChanged</code><code class="java_operator">(</code>VolumeChangedEvent event);
+<code class="java_operator">}</code></code></pre></div>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e280">VolumeChangedEvent.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e280" onclick="selectionCode('contenuCoded0e280');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e280" class="contenuCode"><code class="java_keyword2">import</code> java.util.EventObject;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> VolumeChangedEvent <code class="java_keyword1">extends</code> EventObject<code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> <code class="java_keyword3">int</code> newVolume;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">VolumeChangedEvent</code><code class="java_operator">(</code>Object source, <code class="java_keyword3">int</code> newVolume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>source);
+ 
+		<code class="java_literal2">this</code>.newVolume <code class="java_operator">=</code> newVolume;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">int</code> <code class="java_function">getNewVolume</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		<code class="java_keyword1">return</code> newVolume;
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Maintenant, nous allons implémenter ce système d'écouteurs dans le modèle pour que d'autres entités puissent "écouter" les changements du modèle. 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e356">VolumeModel.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e356" onclick="selectionCode('contenuCoded0e356');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e356" class="contenuCode"><code class="java_keyword2">import</code> javax.swing.event.EventListenerList;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> VolumeModel <code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> <code class="java_keyword3">int</code> volume;
+ 
+	<code class="java_keyword1">private</code> EventListenerList listeners;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">VolumeModel</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		<code class="java_literal2">this</code><code class="java_operator">(</code><code class="java_digit">0</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">VolumeModel</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>);
+ 
+		<code class="java_literal2">this</code>.volume <code class="java_operator">=</code> volume;
+ 
+		listeners <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">EventListenerList</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">int</code> <code class="java_function">getVolume</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		<code class="java_keyword1">return</code> volume;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">setVolume</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code>.volume <code class="java_operator">=</code> volume;
+ 
+		<code class="java_function">fireVolumeChanged</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">addVolumeListener</code><code class="java_operator">(</code>VolumeListener listener)<code class="java_operator">{</code>
+		listeners.<code class="java_function">add</code><code class="java_operator">(</code>VolumeListener.<code class="java_keyword3">class</code>, listener);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">removeVolumeListener</code><code class="java_operator">(</code>VolumeListener l)<code class="java_operator">{</code>
+		 listeners.<code class="java_function">remove</code><code class="java_operator">(</code>VolumeListener.<code class="java_keyword3">class</code>, l);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">fireVolumeChanged</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		VolumeListener[] listenerList <code class="java_operator">=</code> <code class="java_operator">(</code>VolumeListener[])listeners.<code class="java_function">getListeners</code><code class="java_operator">(</code>VolumeListener.<code class="java_keyword3">class</code>);
+ 
+		<code class="java_keyword1">for</code><code class="java_operator">(</code>VolumeListener listener : listenerList)<code class="java_operator">{</code>
+			listener.<code class="java_function">volumeChanged</code><code class="java_operator">(</code><code class="java_keyword1">new</code> <code class="java_function">VolumeChangedEvent</code><code class="java_operator">(</code><code class="java_literal2">this</code>, <code class="java_function">getVolume</code><code class="java_operator">(</code>)));
+		<code class="java_operator">}</code>
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Voilà, maintenant notre modèle avertit tous ses écouteurs à chaque changement de volume. Ensuite, en fonction de l'application, on peut tout à fait imaginer plusieurs listeners par modèles et d'autres événements dans les listeners, par exemple quand le volume dépasse certains seuils... Vous voyez donc qu'un modèle peut très vite devenir conséquent. 
+				</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LII-B">II-B. Le contrôleur<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+        
+        <p>
+					Nous allons maintenant développer notre contrôleur. Comme le contrôleur doit le moins possible être dépendant de Swing, on va créer une classe abstraite représentant une vue du volume. 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e613">VolumeView.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e613" onclick="selectionCode('contenuCoded0e613');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e613" class="contenuCode"><code class="java_keyword1">public</code> <code class="java_keyword1">abstract</code> <code class="java_keyword3">class</code> VolumeView <code class="java_keyword1">implements</code> VolumeListener<code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> VolumeController controller <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">VolumeView</code><code class="java_operator">(</code>VolumeController controller)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>);
+ 
+		<code class="java_literal2">this</code>.controller <code class="java_operator">=</code> controller;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword1">final</code> VolumeController <code class="java_function">getController</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		<code class="java_keyword1">return</code> controller;
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword1">abstract</code> <code class="java_keyword3">void</code> <code class="java_function">display</code><code class="java_operator">(</code>);
+	<code class="java_keyword1">public</code> <code class="java_keyword1">abstract</code> <code class="java_keyword3">void</code> <code class="java_function">close</code><code class="java_operator">(</code>);
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Maintenant notre contrôleur ne manipulera que des objets de type View et non plus de type Swing. 
+				</p>
+        <p>
+					A nouveau dans un souci de simplicité, nous allons créer un seul contrôleur pour les 3 vues que nous aurons. Dans notre cas, c'est plus simple de faire ainsi, vu que nos 3 vues font toutes la même chose et font très peu de choses. Dans le cas de vue fondamentalement différentes, il est fortement conseillé d'utiliser plusieurs contrôleurs. 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e720">VolumeController.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e720" onclick="selectionCode('contenuCoded0e720');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e720" class="contenuCode"><code class="java_keyword1">public</code> <code class="java_keyword3">class</code> VolumeController <code class="java_operator">{</code>
+	<code class="java_keyword1">public</code> VolumeView fieldView <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">public</code> VolumeView spinnerView <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">public</code> VolumeView listView <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">private</code> VolumeModel model <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> VolumeController <code class="java_operator">(</code>VolumeModel model)<code class="java_operator">{</code>
+		<code class="java_literal2">this</code>.model <code class="java_operator">=</code> model;
+ 
+		fieldView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrameFieldVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+		spinnerView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrameSpinnerVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+		listView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrameListVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+ 
+		<code class="java_function">addListenersToModel</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">private</code> <code class="java_keyword3">void</code> <code class="java_function">addListenersToModel</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		model.<code class="java_function">addVolumeListener</code><code class="java_operator">(</code>fieldView);
+		model.<code class="java_function">addVolumeListener</code><code class="java_operator">(</code>spinnerView);
+		model.<code class="java_function">addVolumeListener</code><code class="java_operator">(</code>listView);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">displayViews</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		fieldView.<code class="java_function">display</code><code class="java_operator">(</code>);
+		spinnerView.<code class="java_function">display</code><code class="java_operator">(</code>);
+		listView.<code class="java_function">display</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">closeViews</code><code class="java_operator">(</code>)<code class="java_operator">{</code>
+		fieldView.<code class="java_function">close</code><code class="java_operator">(</code>);
+		spinnerView.<code class="java_function">close</code><code class="java_operator">(</code>);
+		listView.<code class="java_function">close</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">notifyVolumeChanged</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		model.<code class="java_function">setVolume</code><code class="java_operator">(</code>volume);
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+      </div>
+      
+		<h2 class="TitreSection1" id="LII-C">II-C. Les vues<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+        
+        <p>
+					Comme nous l'avons vu avec le développement du contrôleur, nous allons avoir 3 vues : 
+				</p>
+        <ul class="ListeDVP">
+          <li>Une vue permettant de modifier le volume avec un champ texte avec un bouton permettant de valider le nouveau volume : JFrameFieldVolume</li>
+          <li>Une vue permettant de modifier le volume à l'aide d'un spinner avec un bouton permettant de valider le nouveau volume : JFrameSpinnerVolume</li>
+          <li>Une vue listant les différents volumes et qui ajoutera chaque nouveau volume dans une liste déroulante : JFrameListVolume</li>
+        </ul>
+        <p>
+					Toutes ces vues seront représentées par une JFrame.
+				</p>
+        <p>
+					Voici donc nos 3 vues : 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e993">JFrameFieldVolume.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e993" onclick="selectionCode('contenuCoded0e993');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e993" class="contenuCode"><code class="java_keyword2">import</code> java.awt.event.ActionEvent;
+<code class="java_keyword2">import</code> java.awt.event.ActionListener;
+<code class="java_keyword2">import</code> java.text.NumberFormat;
+ 
+<code class="java_keyword2">import</code> javax.swing.JButton;
+<code class="java_keyword2">import</code> javax.swing.JFormattedTextField;
+<code class="java_keyword2">import</code> javax.swing.JFrame;
+<code class="java_keyword2">import</code> javax.swing.JPanel;
+<code class="java_keyword2">import</code> javax.swing.text.DefaultFormatter;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> JFrameFieldVolume <code class="java_keyword1">extends</code> VolumeView <code class="java_keyword1">implements</code> ActionListener<code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> JFrame frame <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JPanel contentPane <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JFormattedTextField field <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JButton button <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> NumberFormat format <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameFieldVolume</code><code class="java_operator">(</code>VolumeController controller) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code><code class="java_operator">(</code>controller, <code class="java_digit">0</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameFieldVolume</code><code class="java_operator">(</code>VolumeController controller, <code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>controller); 
+ 
+		<code class="java_function">buildFrame</code><code class="java_operator">(</code>volume);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">private</code> <code class="java_keyword3">void</code> <code class="java_function">buildFrame</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		frame <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrame</code><code class="java_operator">(</code>);
+ 
+		contentPane <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JPanel</code><code class="java_operator">(</code>);
+ 
+		format <code class="java_operator">=</code> NumberFormat.<code class="java_function">getNumberInstance</code><code class="java_operator">(</code>);
+		format.<code class="java_function">setParseIntegerOnly</code><code class="java_operator">(</code><code class="java_literal2">true</code>);
+		format.<code class="java_function">setGroupingUsed</code><code class="java_operator">(</code><code class="java_literal2">false</code>);		
+		format.<code class="java_function">setMaximumFractionDigits</code><code class="java_operator">(</code><code class="java_digit">0</code>);
+		format.<code class="java_function">setMaximumIntegerDigits</code><code class="java_operator">(</code><code class="java_digit">3</code>);
+ 
+		field <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFormattedTextField</code><code class="java_operator">(</code>format);
+		field.<code class="java_function">setValue</code><code class="java_operator">(</code>volume);
+		<code class="java_operator">(</code><code class="java_operator">(</code>DefaultFormatter)field.<code class="java_function">getFormatter</code><code class="java_operator">(</code>)).<code class="java_function">setAllowsInvalid</code><code class="java_operator">(</code><code class="java_literal2">false</code>);
+		contentPane.<code class="java_function">add</code><code class="java_operator">(</code>field);
+ 
+		button <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JButton</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">Mettre</code><code class="java_literal1"> </code><code class="java_literal1">à</code><code class="java_literal1"> </code><code class="java_literal1">jour</code><code class="java_literal1">"</code>);
+		button.<code class="java_function">addActionListener</code><code class="java_operator">(</code><code class="java_literal2">this</code>);
+		contentPane.<code class="java_function">add</code><code class="java_operator">(</code>button);
+ 
+		frame.<code class="java_function">setContentPane</code><code class="java_operator">(</code>contentPane);
+		frame.<code class="java_function">setTitle</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">JFrameSpinnerVolume</code><code class="java_literal1">"</code>);
+		frame.<code class="java_function">pack</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">close</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">dispose</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">display</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">setVisible</code><code class="java_operator">(</code><code class="java_literal2">true</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">volumeChanged</code><code class="java_operator">(</code>VolumeChangedEvent event) <code class="java_operator">{</code>
+		field.<code class="java_function">setValue</code><code class="java_operator">(</code>event.<code class="java_function">getNewVolume</code><code class="java_operator">(</code>));
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">actionPerformed</code><code class="java_operator">(</code>ActionEvent arg0) <code class="java_operator">{</code>
+		<code class="java_function">getController</code><code class="java_operator">(</code>).<code class="java_function">notifyVolumeChanged</code><code class="java_operator">(</code>Integer.<code class="java_function">parseInt</code><code class="java_operator">(</code>field.<code class="java_function">getValue</code><code class="java_operator">(</code>).<code class="java_function">toString</code><code class="java_operator">(</code>)));
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e1428">JFrameListVolume.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e1428" onclick="selectionCode('contenuCoded0e1428');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e1428" class="contenuCode"><code class="java_keyword2">import</code> javax.swing.DefaultListModel;
+<code class="java_keyword2">import</code> javax.swing.JFrame;
+<code class="java_keyword2">import</code> javax.swing.JList;
+<code class="java_keyword2">import</code> javax.swing.JPanel;
+<code class="java_keyword2">import</code> javax.swing.JScrollPane;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> JFrameListVolume <code class="java_keyword1">extends</code> VolumeView <code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> JFrame frame <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JPanel contentPane <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JList listVolume <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JScrollPane scrollVolume <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> DefaultListModel jListModel <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameListVolume</code><code class="java_operator">(</code>VolumeController controller) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code><code class="java_operator">(</code>controller, <code class="java_digit">0</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameListVolume</code><code class="java_operator">(</code>VolumeController controller, <code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>controller); 
+ 
+		<code class="java_function">buildFrame</code><code class="java_operator">(</code>volume);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">private</code> <code class="java_keyword3">void</code> <code class="java_function">buildFrame</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		frame <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrame</code><code class="java_operator">(</code>);
+ 
+		contentPane <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JPanel</code><code class="java_operator">(</code>);
+ 
+		jListModel <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">DefaultListModel</code><code class="java_operator">(</code>);
+		jListModel.<code class="java_function">addElement</code><code class="java_operator">(</code>volume);
+ 
+		listVolume <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JList</code><code class="java_operator">(</code>jListModel);
+ 
+		scrollVolume <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JScrollPane</code><code class="java_operator">(</code>listVolume);
+		contentPane.<code class="java_function">add</code><code class="java_operator">(</code>scrollVolume);
+ 
+		frame.<code class="java_function">setContentPane</code><code class="java_operator">(</code>contentPane);
+		frame.<code class="java_function">setTitle</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">JFrameListVolume</code><code class="java_literal1">"</code>);
+		frame.<code class="java_function">pack</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">close</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">dispose</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">display</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">setVisible</code><code class="java_operator">(</code><code class="java_literal2">true</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">volumeChanged</code><code class="java_operator">(</code>VolumeChangedEvent event) <code class="java_operator">{</code>
+		jListModel.<code class="java_function">addElement</code><code class="java_operator">(</code>event.<code class="java_function">getNewVolume</code><code class="java_operator">(</code>));
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e1741">JFrameSpinnerVolume.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e1741" onclick="selectionCode('contenuCoded0e1741');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e1741" class="contenuCode"><code class="java_keyword2">import</code> java.awt.event.ActionEvent;
+<code class="java_keyword2">import</code> java.awt.event.ActionListener;
+ 
+<code class="java_keyword2">import</code> javax.swing.JButton;
+<code class="java_keyword2">import</code> javax.swing.JFrame;
+<code class="java_keyword2">import</code> javax.swing.JPanel;
+<code class="java_keyword2">import</code> javax.swing.JSpinner;
+<code class="java_keyword2">import</code> javax.swing.SpinnerNumberModel;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> JFrameSpinnerVolume <code class="java_keyword1">extends</code> VolumeView <code class="java_keyword1">implements</code> ActionListener<code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> JFrame frame <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JPanel contentPane <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JSpinner spinner <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> SpinnerNumberModel spinnerModel <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> JButton button <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameSpinnerVolume</code><code class="java_operator">(</code>VolumeController controller) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code><code class="java_operator">(</code>controller, <code class="java_digit">0</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">JFrameSpinnerVolume</code><code class="java_operator">(</code>VolumeController controller, <code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>controller); 
+ 
+		<code class="java_function">buildFrame</code><code class="java_operator">(</code>volume);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">private</code> <code class="java_keyword3">void</code> <code class="java_function">buildFrame</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		frame <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrame</code><code class="java_operator">(</code>);
+ 
+		contentPane <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JPanel</code><code class="java_operator">(</code>);
+ 
+		spinnerModel <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">SpinnerNumberModel</code><code class="java_operator">(</code>volume, <code class="java_digit">0</code>, <code class="java_digit">100</code>, <code class="java_digit">1</code>);
+ 
+		spinner <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JSpinner</code><code class="java_operator">(</code>spinnerModel);
+		contentPane.<code class="java_function">add</code><code class="java_operator">(</code>spinner);
+ 
+		button <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JButton</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">Mettre</code><code class="java_literal1"> </code><code class="java_literal1">à</code><code class="java_literal1"> </code><code class="java_literal1">jour</code><code class="java_literal1">"</code>);
+		button.<code class="java_function">addActionListener</code><code class="java_operator">(</code><code class="java_literal2">this</code>);
+		contentPane.<code class="java_function">add</code><code class="java_operator">(</code>button);
+ 
+		frame.<code class="java_function">setContentPane</code><code class="java_operator">(</code>contentPane);
+		frame.<code class="java_function">setTitle</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">JFrameSpinnerVolume</code><code class="java_literal1">"</code>);
+		frame.<code class="java_function">pack</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">close</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">dispose</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">display</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">setVisible</code><code class="java_operator">(</code><code class="java_literal2">true</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">volumeChanged</code><code class="java_operator">(</code>VolumeChangedEvent event) <code class="java_operator">{</code>
+		spinnerModel.<code class="java_function">setValue</code><code class="java_operator">(</code>event.<code class="java_function">getNewVolume</code><code class="java_operator">(</code>));
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">actionPerformed</code><code class="java_operator">(</code>ActionEvent arg0) <code class="java_operator">{</code>
+		<code class="java_function">getController</code><code class="java_operator">(</code>).<code class="java_function">notifyVolumeChanged</code><code class="java_operator">(</code>spinnerModel.<code class="java_function">getNumber</code><code class="java_operator">(</code>).<code class="java_function">intValue</code><code class="java_operator">(</code>));
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Voilà, nos 3 vues sont maintenant développées. Elles sont tout ce qu'il y a de plus basiques et on pourrait bien sûr les optimiser, en les plaçant correctement sur l'écran, en donnant une bonne taille aux composants, ... Mais là n'est pas le but de ce tutoriel.
+				</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LII-D">II-D. La classe lanceur<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+        
+        <p>
+					On va maintenant créer la classe "main" de l'application. Sa fonction est plus que simple, elle crée un nouveau modèle, crée un nouveau contrôleur en lui passant le modèle et demande au contrôleur d'afficher les vues. 
+				</p>
+        <p>
+					Voici donc à quoi elle va ressembler : 
+				</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e2145">JVolume.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e2145" onclick="selectionCode('contenuCoded0e2145');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e2145" class="contenuCode"><code class="java_keyword1">public</code> <code class="java_keyword3">class</code> JVolume <code class="java_operator">{</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword1">static</code> <code class="java_keyword3">void</code> <code class="java_function">main</code><code class="java_operator">(</code>String[] args) <code class="java_operator">{</code>
+		VolumeModel model <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">VolumeModel</code><code class="java_operator">(</code><code class="java_digit">50</code>);
+		VolumeController controller <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">VolumeController</code><code class="java_operator">(</code>model);
+		controller.<code class="java_function">displayViews</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+        <p>
+					Rien de bien compliqué donc. 
+				</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LII-E">II-E. Résultat<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+        
+        <p>
+					Voilà, notre exemple est maintenant terminé. Vous voyez que nous avons pu rapidement mettre en oeuvre une architecture MVC, mais que ca augmente tout de même le temps de développement et la taille du code et que nous sommes dans une toute petite application. Mais le résultat est tout de même là, toutes nos vues sont synchronisées et le moindre changement sur une des vues est tout de suite actifs sur les autres vues. 
+				</p>
+        <p>
+					Avec cet architecture, si nous voulons ajouter une nouvelle vue, il suffit tout simplement d'ajouter 4 lignes dans le contrôleur (une pour la déclaration, une pour l'initialisation et une autre pour les méthodes close et display).
+				</p>
+      </div>
+    </div>
+    
+		<h1 class="TitreSection0" id="LIII">III. Changement de framework graphique<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h1><div class="BlocSection0">
+      
+      <p>
+				Nous allons changer de framework graphique pour une des vues. Nous allons donc modifier notre JFrameListVolume pour la faire passer en AWT. C'est donc une nouvelle classe FrameListVolume qui va venir la remplacer. 
+			</p>
+      <p>
+				Le premier changement à faire est de remplacer dans le constructeur du contrôleur JFrameListVolume par FrameListVolume : 
+			</p>
+      <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e2235">Constructeur du contrôleur<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e2235" onclick="selectionCode('contenuCoded0e2235');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e2235" class="contenuCode"><code class="java_keyword1">public</code> VolumeController <code class="java_operator">(</code>VolumeModel model)<code class="java_operator">{</code>
+	<code class="java_literal2">this</code>.model <code class="java_operator">=</code> model;
+ 
+	fieldView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrameFieldVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+	spinnerView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">JFrameSpinnerVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+	listView <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">FrameListVolume</code><code class="java_operator">(</code><code class="java_literal2">this</code>, model.<code class="java_function">getVolume</code><code class="java_operator">(</code>));
+ 
+	<code class="java_function">addListenersToModel</code><code class="java_operator">(</code>);
+<code class="java_operator">}</code></code></pre></div>
+      <p>
+				Ensuite nous allons développer notre interface avec AWT : 
+			</p>
+      <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e2316">FrameListVolume.java<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e2316" onclick="selectionCode('contenuCoded0e2316');">S&eacute;lectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e2316" class="contenuCode"><code class="java_keyword2">import</code> java.awt.Frame;
+<code class="java_keyword2">import</code> java.awt.List;
+ 
+<code class="java_keyword1">public</code> <code class="java_keyword3">class</code> FrameListVolume <code class="java_keyword1">extends</code> VolumeView <code class="java_operator">{</code>
+	<code class="java_keyword1">private</code> Frame frame <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+	<code class="java_keyword1">private</code> List listVolume <code class="java_operator">=</code> <code class="java_literal2">null</code>;
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">FrameListVolume</code><code class="java_operator">(</code>VolumeController controller) <code class="java_operator">{</code>
+		<code class="java_literal2">this</code><code class="java_operator">(</code>controller, <code class="java_digit">0</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_function">FrameListVolume</code><code class="java_operator">(</code>VolumeController controller, <code class="java_keyword3">int</code> volume)<code class="java_operator">{</code>
+		<code class="java_literal2">super</code><code class="java_operator">(</code>controller); 
+ 
+		<code class="java_function">buildFrame</code><code class="java_operator">(</code>volume);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">private</code> <code class="java_keyword3">void</code> <code class="java_function">buildFrame</code><code class="java_operator">(</code><code class="java_keyword3">int</code> volume) <code class="java_operator">{</code>
+		frame <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">Frame</code><code class="java_operator">(</code>);
+ 
+		listVolume <code class="java_operator">=</code> <code class="java_keyword1">new</code> <code class="java_function">List</code><code class="java_operator">(</code>);
+		listVolume.<code class="java_function">add</code><code class="java_operator">(</code>Integer.<code class="java_function">toString</code><code class="java_operator">(</code>volume));
+		frame.<code class="java_function">add</code><code class="java_operator">(</code>listVolume);
+ 
+		frame.<code class="java_function">setTitle</code><code class="java_operator">(</code><code class="java_literal1">"</code><code class="java_literal1">JFrameListVolume</code><code class="java_literal1">"</code>);
+		frame.<code class="java_function">pack</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">close</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">dispose</code><code class="java_operator">(</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword4">@</code><code class="java_keyword4">Override</code>
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">display</code><code class="java_operator">(</code>) <code class="java_operator">{</code>
+		frame.<code class="java_function">setVisible</code><code class="java_operator">(</code><code class="java_literal2">true</code>);
+	<code class="java_operator">}</code>
+ 
+	<code class="java_keyword1">public</code> <code class="java_keyword3">void</code> <code class="java_function">volumeChanged</code><code class="java_operator">(</code>VolumeChangedEvent event) <code class="java_operator">{</code>
+		listVolume.<code class="java_function">add</code><code class="java_operator">(</code>Integer.<code class="java_function">toString</code><code class="java_operator">(</code>event.<code class="java_function">getNewVolume</code><code class="java_operator">(</code>)));
+	<code class="java_operator">}</code>
+<code class="java_operator">}</code></code></pre></div>
+      <p>
+				Eh voilà, nous avons migré une partie de notre application vers AWT sans le moindre problème. Et grâce à notre architecture, nous n'avons dû changer qu'une petite partie du contrôleur et la partie présentation. 
+			</p>
+      <p>
+				Maintenant, pour ne pas avoir développé la première vue Swing avec la liste pour rien, nous allons l'ajouter à nouveau au contrôleur. Nous avons donc maintenant quatre vues dans notre application et nous avons ajouté la vue avec une simplicité déroutante. 
+			</p>
+      <p>
+				Voilà ce que donnera donc notre application au final : 
+			</p>
+      <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./images/jvolume.PNG" alt="Résultat final" width="514" height="242"/><figcaption class="figure-img-caption TextAlign-center">Résultat final</figcaption></figure></div>
+    </div>
+    
+		<h1 class="TitreSection0" id="LIV">IV. Conclusion<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h1><div class="BlocSection0">
+      
+      <p>
+				Voilà, vous venez de développer votre première (ou une nouvelle pour certains) application respectant l'architecture MVC. Comme vous avez pu le voir, cette architecture permet une très bonne séparation des couches et facilite l'ajout ou la modification de vues. Par contre, elle nécessite un travail supplémentaire et augmente la quantité de code à écrire. Elle n'est donc destinée qu'à de grosses applications ou à de moyennes applications en évolution constante. Mais rien ne vous empêche de l'utiliser dans n'importe quel développement. 
+			</p>
+      <p>
+				Télécharger <a class="lienArticle simple" href="./fichiers/volume.zip">les sources</a>. 
+			</p>
+      <p>
+				Vous trouverez d'autres ressources sur MVC sur le <a class="lienArticle simple" href="http://tahe.developpez.com/">site de Serge Tahé</a>.
+			</p>
+      <p>
+				Merci à <a class="lienArticle simple" href="http://www.developpez.net/forums/u107845/fleur-anne-blain/">trinityDev</a> pour ses corrections. 
+			</p>
+    </div>
+  </section><section class="articleBody"><p>Vous avez aimé ce tutoriel ? Alors partagez-le en cliquant sur les boutons suivants : <?php echo DoBookMarks("Implémentation du pattern MVC",'http://baptiste-wicht.developpez.com/tutoriel/conception/mvc/'); ?></p></section><p class="licence">Les sources présentées sur cette page sont libres de droits et vous pouvez les utiliser à votre convenance. Par contre, la page de présentation constitue une ouvre intellectuelle protégée par les droits d'auteur. Copyright &copy;2009 Baptiste Wicht.
+				Aucune reproduction, même partielle, ne peut être faite de ce site et de l'ensemble de son contenu :
+			textes, documents, images, etc. sans l'autorisation expresse de l'auteur. Sinon vous encourez selon la loi jusqu'à trois ans de prison et jusqu'à 300 000 € de dommages et intérêts.</p></section>
+    </article>
+
+<footer class="layout" role="contentinfo">				
+  <div id="gabarit_footer">
+		<div id="gabarit_footer_right">&nbsp;</div>
+		<div id="gabarit_footer_left">&nbsp;</div>
+		
+		<p id="responsable">			
+			<strong>Responsable des outils : Developpez.com</strong>
+			 - <a href="https://www.developpez.net/forums/">Contacter par le forum</a>
+		</p>
+	</div>
+	
+  <div id="gabarit_pied">
+  	<div id="gabarit_pied_right">&nbsp;</div>
+  
+  	<div id="gabarit_pied_left">&nbsp;</div>
+  
+  	<div id="gabarit_pied_contenu_superieur">
+  	<div id="gabarit_pied_contenu">
+  		<div class="gabarit_pied_div">
+  			<span>Developpez.com</span>
+  			<p><a href="https://club.developpez.com/contacts/">Nous contacter</a></p>
+  			<p><a href="https://www.developpez.com/participez/">Participez</a></p>
+  			<p><a href="https://www.developpez.com/legal/">Informations légales</a></p>
+  		</div>
+  		<div class="gabarit_pied_div_separation">&nbsp;</div>
+  		<div class="gabarit_pied_div">
+  			<span>Services</span>
+  			<p><a onclick="window.open(this.href); return false;" href="https://www.developpez.net/forums/f552/hardware-systemes-logiciels/">Forum Systèmes</a></p>
+  			<p><a href="https://blog.developpez.com/">Blogs</a></p>
+  			<p><a href="https://www.developpez.com/hebergement/">Hébergement</a></p>
+  		</div>
+  		<div class="gabarit_pied_div_separation">&nbsp;</div>
+  		<div class="gabarit_pied_div">
+  			<span>Partenaires</span>
+  			<p><a target="_blank" href="http://www.planethoster.net/">Hébergement Web</a></p>
+  		</div>
+  		<div style="clear: both;"></div>
+  		<div id="gabarit_pied_copyright">
+  			<p>Copyright &copy; 2000-2012 - www.developpez.com</p>
+  		</div>
+  	</div>
+  	</div>
+  </div>
+
+</footer>
+  </body>
+</html>
+
+		

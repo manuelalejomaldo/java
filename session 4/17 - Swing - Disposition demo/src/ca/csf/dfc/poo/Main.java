@@ -18,8 +18,8 @@ public class Main
 
         //new DemoGridBagLayout().setVisible(true);
 
-        new DemoJPanel().setVisible(true);
+        //new DemoJPanel().setVisible(true);
     	
-    	//new Ex().setVisible(true);
+    	new Ex().setVisible(true);
     }
 }

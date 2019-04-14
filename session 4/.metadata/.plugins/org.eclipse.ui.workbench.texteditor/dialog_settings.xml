@@ -2,12 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="pack" key="selection"/>
+		<item value="spin_LargeurTrait" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="spin_LargeurTrait"/>
+			<item value="btn_CouleurTrait"/>
+			<item value="Trait"/>
+			<item value="�"/>
+			<item value="getArrierePlan"/>
+			<item value="vider"/>
+			<item value="reagirNouveau"/>
 			<item value="pack"/>
 			<item value="Personne"/>
 			<item value="e"/>
